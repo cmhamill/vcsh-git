@@ -1,0 +1,6 @@
+*
+!/etc
+!/etc/git
+!/etc/git/*
+!/.gitignore.d
+!/.gitignore.d/git
