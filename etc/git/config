@@ -1,0 +1,100 @@
+[alias]
+    ; List aliases (depends on package 'git-extras').
+    aliases = !git-alias
+
+    ; Show staged changes.
+    pending = diff --staged
+
+    ; Push branch, setting upstream.
+    pushup = "!f() { git push -u origin \"$(git symbolic-ref --short HEAD)\"; }; f"
+
+    ; Remove staged changes.
+    unstage = reset HEAD --
+
+    ; Safe rebase from origin upstream branch.
+    up = pull --rebase --autostash
+
+[commit]
+    ; Include diff in commit message template.
+    verbose = true
+
+[core]
+    ; Avoid commit abbreviations losing their uniquess as a repository grows.
+    abbrev = 12
+
+[diff]
+    ; Try to make diffs as human-legible as possible.
+    algorithm = histogram
+    indentHeuristic = true
+    interHunkContext = 3
+    mnemonicPrefix = true
+    renames = copies
+
+    ; Highlight some additional details in diffs.
+    colorMoved = true
+    colorMovedWS = allow-indentation-change
+    wsErrorHighlight = all
+
+[grep]
+    lineNumber = true
+    patternType = perl
+
+[log]
+    abbrevCommit = true
+    date = relative
+    decorate = short
+    follow = true
+
+[merge]
+    ; Show original text alongside each side in merge conflicts.
+    conflictStyle = diff3
+    tool = vimdiff3
+
+    ; Help me make merge commits more meaningful.
+    log = true
+
+    stat = true
+    verbosity = 3
+
+[pull]
+    ; Stop me if I try to merge when pulling.
+    ff = only
+
+[push]
+    default = simple
+
+    ; Push relevant tags by default.
+    followTags = true
+
+[rebase]
+    missingCommitsCheck = error
+    stat = true
+
+[rerere]
+    enabled = true
+
+[status]
+    showStash = true
+
+[tag]
+    forceSignAnnotated = true
+    sort = version:refname
+
+[transfer]
+    fsckObjects = true
+
+[url "git@github.com:cmhamill/"]
+    insteadOf = cmhamill:
+
+[url "git@github.com:nurx/"]
+    insteadOf = nurx:
+
+[user]
+    signingKey = 3736E8500EA85D2C5082FC7D689B73DD5A3DD5EA
+    useConfigOnly = true
+
+[worktree]
+    guessRemote = true
+
+[includeIf "gitdir:~/etc/vcsh/repo.d/"]
+    path = config.personal
